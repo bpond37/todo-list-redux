@@ -1,16 +1,21 @@
 import React from 'react'
 
-export default function TodoList (props) {
 
-    // useEffect()
-    console.log(props.todos)
+export default function TodoList ({todos,check}) {
+
+    console.log(todos, check)
     
-    const list = props.todos.map(({tno,title})=><li key = {tno}>{title}</li>)
-
+    const list = todos.map(
+        ({tno,title,complete})=>
+        <li key = {tno}> {tno}: {title} 
+        <input type='checkbox' onChange={()=>check(tno)} checked={complete}/> </li>
+        )
     return(
         <div>
-            <h1>TodoList</h1>
+            <h3>TodoList</h3>
+            <ul>
             {list}
+            </ul>
         </div>
     )
 }
